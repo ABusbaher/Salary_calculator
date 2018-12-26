@@ -1,0 +1,158 @@
+body {
+    background:url("../bule 1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color:#000033;
+    font-family: "Times New Roman", Times, serif;
+}
+
+h1{
+    font-size: 32px;
+    font-weight:bold;
+    padding: 30px;
+    color: red !important;
+
+}
+
+h4{
+    font-size: 22px !important;
+    font-weight:bold;
+    color: red !important;
+}
+
+.dateForm {
+    padding-top: 50px;
+}
+
+#glavnaForma {
+    padding-top: 50px;
+}
+
+
+.form-group label {
+    background-color: white;
+}
+
+a {
+    font-size: 28px;
+    color: white !important;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.custom-control-label {
+    background-color: white;
+}
+
+button {
+    background-color: black !important;
+    color:white !important;
+    font-size: 20px !important;
+}
+
+button:hover {
+    background-color: white !important;
+    color:black !important;
+    font-size: 20px !important;
+}
+
+.bigButton {
+    height: 120px;
+    width: 180px;
+    font-size: 24px !important;
+}
+
+.bigButton:hover {
+    font-size: 24px !important;
+}
+
+
+button:hover {
+    background-color: white !important;
+    /*font-size: 24px !important;*/
+    color:black !important;
+}
+
+#dugme {
+    padding: 30px;
+}
+
+#presenceB {
+    width: 23px;
+    height: 23px;
+}
+
+#preporuka {
+    width: 22px;
+    height: 22px;
+}
+
+#ua {
+    width: 22px;
+    height: 22px;
+}
+
+.custom-control-label{
+    font-size: 18px;
+}
+
+.form-group label{
+    font-size: 16px;
+}
+
+#date label{
+    font-size: 22px;
+}
+
+.form-inline{
+    font-size: 22px;
+}
+
+.form-inline option {
+    font-size: 22px;
+}
+
+#pozicija {
+    font-size: 18px;
+}
+
+#pozicija option {
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+    color: #71777D;
+}
+
+#result {
+    background-color: white;
+    padding-bottom: 30px;
+}
+
+.alignleft {
+    float: left;
+    color: #555F61;
+}
+.alignright {
+    float: right;
+    color: #555F61;
+}
+
+#uputsvo {
+  padding-top: 280px;
+}
+/*
+hr {
+    border-top: 3px double #8c8b8b;
+}
+
+.rslDiv {
+    padding-bottom: 20px;
+}*/

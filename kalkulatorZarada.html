@@ -1,0 +1,385 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Калкулатор зарада</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="dist/jquery.datetimepicker.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12" id="uputsvo">
+            <h1 class="text-center">Калкулатор зарада</h1>
+            <div class="uputsvo">
+                <h4>Ради тачног обрачуна плате неопходно је да попуните сва поља.</h4>
+                <h4>Само унос бројева је дозвољен.</h4>
+                <h4>За она поља која бисте оставили празна ставите 0(нулу).</h4>
+                <h4>Последња три поља чекирајте укулико сте остварили услове за бонусе (прво поље је основа свих бонуса ако није чекирано ниједан бонус не остварујете).</h4>
+            </div>
+            <div id="result"></div>
+        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-8 col-xs-12">
+            <form class="dateForm">
+                <div class="form-group" id="date">
+                    <label for="mesec">Изабери месец и годину почетка рада: </label>
+                    <select class="form-inline" name="mesec" id="mesec">
+                        <option value="1">јануар</option>
+                        <option value="2">фебруар</option>
+                        <option value="3">март</option>
+                        <option value="4">април</option>
+                        <option value="5">мај</option>
+                        <option value="6">јун</option>
+                        <option value="7">јул</option>
+                        <option value="8">август</option>
+                        <option value="9">септембар</option>
+                        <option value="10">октобар</option>
+                        <option value="11">новембар</option>
+                        <option value="12">децембар</option>
+                    </select>
+                    <select class="form-inline" name="godina" id="godina">
+                        <option value="24228">2019</option><!--2019 * 12 meseci-->
+                        <option value="24216" selected="selected">2018</option><!--2018 * 12 meseci-->
+                        <option value="24204">2017</option><!--2017 * 12 meseci-->
+                        <option value="24192">2016</option><!--2016 * 12 meseci-->
+                    </select>
+                </div>
+
+                <div class="form-group" id="date">
+                    <label for="mesecPlate">Рачунам плату за месец: </label>
+                    <select class="form-inline" name="mesec" id="mesecPlate">
+                        <option value="23">јануар</option>
+                        <option value="20">фебруар</option>
+                        <option value="22">март</option>
+                        <option value="21">април</option>
+                        <option value="23">мај</option>
+                        <option value="21">јун</option>
+                        <option value="22">јул</option>
+                        <option value="23">август</option>
+                        <option value="20">септембар</option>
+                        <option value="23">октобар</option>
+                        <option value="22">новембар</option>
+                        <option value="21">децембар</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-default pull-right">Изабери
+                    </button>
+                </div>
+            </form>
+
+            <form id="glavnaForma">
+                <div class="form-group">
+                    <label for="pozicija">Изабери радно место:</label>
+                    <select class="form-control" id="pozicija">
+                        <option value="0.05">Оператер предмонтаже</option>
+                        <option value="0.1">Оператер монтаже</option>
+                        <option value="0.2">Визуелна контрола,оператер тестирања(end of line)</option>
+                        <option value="0.25">Оператер на доради(rework)</option>
+                        <option value="0.3">Оператер који зна да ради на више позиција(jumper)</option>
+                        <option value="0.3">Оператер на линији сечења(cutting)</option>
+                        <option value="0.4">Оператер "А" категорије</option>
+                        <option value="0.5">Тим лидер</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="radniDani">Укупан број радних дана(рад у првој и другој смени без викенда):</label>
+                    <select class="form-control" id="radniDani">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="radNocu">Укупан број радних дана ноћу(без викенда):</label>
+                    <select class="form-control" id="radNocu">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="radPraznikom">Укупан број радних дана на државни празник и рад на своју славу:</label>
+                    <select class="form-control" id="radPraznikom">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="prekovremeno">Укупан број прековремених сати - суботе и прековремени сати (пример за 3 суботе унесите 24 (3 * 8ч)):</label>
+                    <select class="form-control" id="prekovremeno">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nightOvertime">Прековремени ноћни рад:</label>
+                    <select class="form-control" id="nightOvertime">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="holidayOvertime">Прековремени рад на државни празник:</label>
+                    <select class="form-control" id="holidayOvertime">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bolovanje">Укупан број дана боловањa (викенди се не броје)
+                    :</label>
+                    <select class="form-control" id="bolovanje">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fpl">Укупан број дана отказане смене
+                    :</label>
+                    <select class="form-control" id="fpl">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="100posto">Укупан број дана одсуства:слава,годишњи одмор,државни празник и плаћено одсуство
+                    </label>
+                    <select class="form-control" id="100posto">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ul">Укупан број дана неплаћено одсуство
+                    :</label>
+                    <select class="form-control" id="ul">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group" >
+                    <label for="indBonus">Унеси проценат индивидуалног бонуса:
+                    </label>
+                    <select class="form-control" id="indBonus">
+                        <option value="0">0% (немам бонус)</option>
+                        <option value="0.03">3%</option>
+                        <option value="0.04">4%</option>
+                        <option value="0.05">5%</option>
+                        <option value="0.06">6%</option>
+                        <option value="0.07">7%</option>
+                        <option value="0.08">8%</option>
+                        <option value="0.09">9%</option>
+                        <option value="0.10">10%</option>
+                        <option value="0.11">11%</option>
+                        <option value="0.12">12%</option>
+                        <option value="0.13">13%</option>
+                        <option value="0.14">14%</option>
+                        <option value="0.15">15%</option>
+                    </select>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="ua">
+                    <label class="custom-control-label" for="ua">Нисам имао ниједан дан НЕОПРАВДАНОГ изостанка
+                    </label>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="preporuka">
+                    <label class="custom-control-label" for="preporuka">Запослени ког сам ја препоручио је остварио 3 месеца рада
+                    </label>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="presenceB">
+                    <label class="custom-control-label" for="presenceB">
+                        Нисам имао ниједан дан одсуства (бонус за присутност)
+                    </label>
+                </div>
+
+                <div id="dugme" class="text-center">
+                    <button type="submit" class="bigButton">Израчунај
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+            <div id="wraper" style="position:fixed">
+                <div id="demo2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <p class="pull-right"><i>Develop by: Bule © 2018</i></p>
+        </div>
+    </div>
+    <script type="text/javascript" src="src/jquery.datetimepicker.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
